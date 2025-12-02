@@ -2,6 +2,7 @@
 using AutPlaywrightTestProj.PageObjects;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
+using NUnit.Framework.Legacy;
 
 namespace AutPlaywrightTestProj
 {
@@ -34,8 +35,13 @@ namespace AutPlaywrightTestProj
             var loginPage = new LoginPage(Page);
             await loginPage.Login("admin", "password");
 
-            await Expect(Page.Locator("text='Employee Details'")).ToBeVisibleAsync(new LocatorAssertionsToBeVisibleOptions { Timeout = 10000 });
+            await Expect(homePage.EmployeeDetailsTab).ToBeVisibleAsync(new LocatorAssertionsToBeVisibleOptions { Timeout = 10000 });
 
+            await homePage.EmployeeListTab.ClickAsync();
+            var employeeListPage = new EmployeeListPage(Page);
+            var tableData = employeeListPage.EmployeeList;
+            ClassicAssert.IsTrue(tableData.Count() > 0);
+            //can add more assertions, just completed parsing for this portion
         }
     }
 }

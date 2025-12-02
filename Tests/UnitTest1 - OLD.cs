@@ -1,4 +1,5 @@
 ﻿
+using AutPlaywrightTestProj.PageObjects;
 using Microsoft.Playwright;
 using NUnit.Framework.Legacy;
 
@@ -26,7 +27,6 @@ namespace AutPlaywrightTestProj
             await page.ClickAsync("text='Log in'");
             var doesExist = page.Locator("xpath=//*[contains(text(),'Employee Details')]").IsVisibleAsync();
             ClassicAssert.IsTrue(doesExist.Result);
-
         }
     }
 }
