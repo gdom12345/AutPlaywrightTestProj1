@@ -6,8 +6,52 @@ using System.Text;
 
 namespace AutPlaywrightTestProj.Framework
 {
-    public class ReflectionUtils
+    public static class ReflectionUtils
     {
+
+        public static Object GetObject(this Dictionary<string, object> dict, Type type)
+        {
+            var obj = Activator.CreateInstance(type);
+
+            foreach (var kv in dict)
+            {
+                var prop = type.GetProperty(kv.Key);
+                if (prop == null) continue;
+
+                object value = kv.Value;
+                if (value is Dictionary<string, object>)
+                {
+                    value = GetObject(dict, prop.PropertyType); // <= This line
+                }
+                try
+                {
+                    prop.SetValue(obj, Convert.ChangeType(kv.Value, prop.PropertyType), null);
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("Cell was in wrong format for " + kv.Key + "\n" + ex.Message);
+                }
+            }
+            return obj;
+        }
+
+        public static T GetObject<T>(this Dictionary<string, object> dict)
+        {
+            return (T)GetObject(dict, typeof(T));
+        }
+
+        public static List<T> GetList<T>(this List<Dictionary<string, object>> dictList)
+        {
+            List<T> list = new List<T>();
+            foreach (Dictionary<string, object> dict in dictList)
+            {
+                list.Add(GetObject<T>(dict));
+            }
+
+            return list;
+        }
+
+
         private static ILocator GetLocator(IPage page, LocatorType locator, string value)
         {
             switch (locator)
