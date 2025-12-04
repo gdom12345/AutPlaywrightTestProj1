@@ -32,7 +32,7 @@ namespace AutPlaywrightTestProj
             var input = new HelloRequest() { Name = "Dominic" };
             var response = greeterClient.SayHelloAsync(input);
 
-            ClassicAssert.AreEqual($"Hello {input.Name}", response.ResponseAsync.Result.Message);
+            Assert.That(response.ResponseAsync.Result.Message, Is.EqualTo($"Hello {input.Name}"));
         }
     }
 }
