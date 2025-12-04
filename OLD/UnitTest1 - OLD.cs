@@ -1,5 +1,4 @@
-﻿using AutPlaywrightTestProj.PageObjects;
-using Microsoft.Playwright;
+﻿using Microsoft.Playwright;
 using NUnit.Framework.Legacy;
 
 

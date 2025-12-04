@@ -1,10 +1,6 @@
-﻿
-using AutPlaywrightTestProj.PageObjects;
-using Grpc.Net.Client;
+﻿using Grpc.Net.Client;
 using GrpcService1;
-using Microsoft.Playwright;
-using Microsoft.Playwright.NUnit;
-using NUnit.Framework.Legacy;
+
 
 namespace AutPlaywrightTestProj
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace AutPlaywrightTestProj.Models
 {
     public class EmployeeListRow
