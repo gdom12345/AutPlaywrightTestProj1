@@ -1,5 +1,7 @@
 ﻿
 using AutPlaywrightTestProj.PageObjects;
+using Grpc.Net.Client;
+using GrpcService1;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework.Legacy;
@@ -28,7 +30,6 @@ namespace AutPlaywrightTestProj
         [Test]
         public async Task Test1()
         {
-
             var homePage = new HomePage(Page);
             await homePage.LoginButton.ClickAsync();
 
@@ -43,5 +44,6 @@ namespace AutPlaywrightTestProj
             ClassicAssert.IsTrue(tableData.Count() > 0);
             //can add more assertions, just completed parsing for this portion
         }
+
     }
 }

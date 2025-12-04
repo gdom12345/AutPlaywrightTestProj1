@@ -1,10 +1,9 @@
-﻿
-using AutPlaywrightTestProj.PageObjects;
+﻿using AutPlaywrightTestProj.PageObjects;
 using Microsoft.Playwright;
 using NUnit.Framework.Legacy;
 
 
-namespace AutPlaywrightTestProj
+namespace AutPlaywrightTestProj.OLD
 {
     [Parallelizable(ParallelScope.Self)]
     [TestFixture]
