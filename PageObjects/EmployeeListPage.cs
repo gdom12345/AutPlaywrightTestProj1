@@ -1,9 +1,6 @@
 ﻿using AutPlaywrightTestProj.Framework;
 using AutPlaywrightTestProj.Models;
 using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutPlaywrightTestProj.PageObjects
 {
